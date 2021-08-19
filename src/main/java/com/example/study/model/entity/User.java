@@ -5,11 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 // Java는 변수이름을 CamelCase Notation을 사용. -> e.g. createdAt
 // DB는 변수이름을 snake_case notation을 사용. -> e.g. created_at
@@ -30,5 +28,10 @@ public class User {
     private String createdBy;
     private LocalDateTime updatedAt;
     private String updatedBy;
+
+
+    // 1 : N
+    @OneToMany(fetch=FetchType.LAZY, mappedBy = "user")
+    private List<OrderDetail> orderDetailList;
 
 }
