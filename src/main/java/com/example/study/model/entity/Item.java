@@ -22,6 +22,17 @@ public class Item {
     private String content;
 
     // 1 : N
+
+    // LAZY = 지연로딩, EAGER = 즉시로딩
+
+    // LAZY = SELECT * FROM item where id = ?
+    // 명시하지 않은 이상 해당 테이블만 가져옴
+
+    // EAGER = 1:1일때 하자.
+    // item_id = order_detail.item_id
+    // user_id = order_detail.user_id
+    // where item.id = ?
+    // 연관관계가 설정된 모든 Table에 대해서 JOIN 이 걸림
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
     private List<OrderDetail> orderDetailList;
 }
