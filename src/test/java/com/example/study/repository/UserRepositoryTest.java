@@ -1,6 +1,7 @@
 package com.example.study.repository;
 
 import com.example.study.StudyApplicationTests;
+import com.example.study.model.entity.Item;
 import com.example.study.model.entity.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,11 +33,14 @@ public class UserRepositoryTest extends StudyApplicationTests {
     @Test
     @Transactional
     public void read(){
+        
+        // select * from user where id =?
         Optional<User> user = userRepository.findById(5L);
 
-        user.ifPresent(selectUser ->{
-            selectUser.getOrderDetailList().forEach(detail -> {
-                System.out.println(detail.getItem());
+        user.ifPresent(selectUser->{
+            selectUser.getOrderDetailList().stream().forEach(detail->{
+                Item item = detail.getItem();
+                System.out.println(item);
             });
         });
     }

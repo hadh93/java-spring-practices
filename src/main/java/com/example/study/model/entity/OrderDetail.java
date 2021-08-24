@@ -28,4 +28,5 @@ public class OrderDetail {
     @ManyToOne
     private Item item;
 
+
 }
