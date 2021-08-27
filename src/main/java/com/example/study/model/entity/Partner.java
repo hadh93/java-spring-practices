@@ -1,6 +1,5 @@
 package com.example.study.model.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,38 +10,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 
-// Java는 변수이름을 CamelCase Notation을 사용. -> e.g. createdAt
-// DB는 변수이름을 snake_case notation을 사용. -> e.g. created_at
-
-@Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Entity
-public class User {
+public class Partner {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String account;
-
-    private String password;
-
+    private String name;
     private String status;
-
-    private String email;
-
-    private String phoneNumber; // DB VARCHAR -> Java String
-
+    private String address;
+    private String callCenter;
+    private String partnerNumber;
+    private String businessNumber;
+    private String ceoName;
     private LocalDateTime registeredAt;
-
     private LocalDateTime unregisteredAt;
-
     private LocalDateTime createdAt;
-
     private String createdBy;
-
     private LocalDateTime updatedAt;
-
     private String updatedBy;
 
 }

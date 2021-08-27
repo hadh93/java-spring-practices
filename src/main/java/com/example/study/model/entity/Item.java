@@ -5,8 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -17,9 +20,14 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String status;
     private String name;
-    private Integer price;
+    private String title;
     private String content;
+    private Integer price;
+    private String brandName;
+    private LocalDateTime createdAt;
+    private String createdBy;
 
     // 1 : N
 
@@ -33,6 +41,8 @@ public class Item {
     // user_id = order_detail.user_id
     // where item.id = ?
     // 연관관계가 설정된 모든 Table에 대해서 JOIN 이 걸림
+    /*
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
     private List<OrderDetail> orderDetailList;
+     */
 }
